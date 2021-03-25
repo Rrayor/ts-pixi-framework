@@ -1,4 +1,4 @@
-import { LogTarget } from '~/framework/logger/enums/log-target.enum';
+import { LogTarget } from '@framework/logger/enums/log-target.enum';
 
 import { LogLevel } from './enums/log-level.enum';
 
