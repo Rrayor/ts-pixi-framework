@@ -1,2 +1,2 @@
-export { Entity } from './entity';
-export { IComponent } from './component';
+export { EntityHierarchy } from '@framework/ecs/entity-hierarchy';
+export { Entity, IComponent } from '@framework/ecs/core';

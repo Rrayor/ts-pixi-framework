@@ -1,5 +1,5 @@
 import { IPreInit, IInit, IPostInit, ITicking, IPreDestroy, IDestroy } from '@framework/ecs/shared';
-import { IComponent } from './component';
+import { IComponent } from '@framework/ecs/core/component';
 
 type constr<T> = { new (...args: any[]): T };
 
