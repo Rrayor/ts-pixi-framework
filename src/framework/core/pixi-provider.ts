@@ -1,8 +1,8 @@
+import { EventTypes } from '@framework/core/constants/event-types';
 import { IAsset } from '@framework/shared/asset';
-import EventEmitter from 'node:events';
-import { Application, Loader, Resource, resources } from 'pixi.js';
+import { Application, Loader } from 'pixi.js';
 
-export class PixiProvider {
+export class PixiService {
     private readonly pixiApp: Application;
 
     constructor() {
@@ -18,10 +18,10 @@ export class PixiProvider {
     }
 
     private onAssetsLoaded(loader: Loader, resources: unknown) {
-        console.log(typeof resources);
+        this.pixiApp.ticker.add(this.tick);
     }
 
     private tick(deltaTime: number) {
-        this.pixiApp.ticker.add((deltaTime) => new CustomEvent('tick', { detail: deltaTime }));
+        this.pixiApp.ticker.add((deltaTime) => new CustomEvent(EventTypes.TICK, { detail: { deltaTime } }));
     }
 }
