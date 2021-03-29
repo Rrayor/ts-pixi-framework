@@ -1,7 +1,8 @@
 import { Entity } from '@framework/ecs/core';
 import { IPreInit, IInit, ITicking, IPreDestroy, IDestroy } from '@framework/ecs/shared';
+import { IPostInit } from './shared/lifecycle';
 
-export class EntityHierarchy implements IPreInit, IInit, ITicking, IPreDestroy, IDestroy {
+export class EntityHierarchy implements IPreInit, IInit, IPostInit, ITicking, IPreDestroy, IDestroy {
     private _entities: Map<string, Entity> = new Map();
 
     public get entities(): Map<string, Entity> {
@@ -14,6 +15,11 @@ export class EntityHierarchy implements IPreInit, IInit, ITicking, IPreDestroy, 
     init(): void {
         this.initEntities();
     }
+
+    postInit(): void {
+        this.postInitEntities();
+    }
+
     tick(deltaTime: number): void {
         this.tickEntities(deltaTime);
     }
@@ -30,6 +36,10 @@ export class EntityHierarchy implements IPreInit, IInit, ITicking, IPreDestroy, 
 
     private initEntities(): void {
         this._entities.forEach((entity: Entity) => entity.init());
+    }
+
+    private postInitEntities(): void {
+        this._entities.forEach((entity: Entity) => entity.postInit());
     }
 
     private tickEntities(deltaTime: number): void {
