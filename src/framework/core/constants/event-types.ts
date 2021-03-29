@@ -1,3 +1,3 @@
 export const EventTypes = {
-  TICK: 'tick'
+    TICK: 'tick',
 };
