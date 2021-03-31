@@ -1,14 +1,13 @@
 import { Entity } from '@framework/ecs';
 import { EntityHierarchy } from '@framework/ecs/entity-hierarchy';
-import { PixiService } from '../core/pixi-service';
-import { IComponent } from '../ecs/core/component';
+import { PixiService } from '@framework/core/pixi-service';
 import { IPreDestroy, IDestroy, IInit, IPreInit, ITicking } from '@framework/ecs/shared/lifecycle';
 
 export class Game implements IPreInit, IInit, ITicking, IPreDestroy, IDestroy {
     private readonly hierarchy = new EntityHierarchy();
-    private readonly pixiService = new PixiService(this.tick);
 
     preInit(): void {
+        PixiService.create(this.tick);
         this.hierarchy.preInit();
     }
     init(): void {

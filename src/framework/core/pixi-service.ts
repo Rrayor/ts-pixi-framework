@@ -1,11 +1,24 @@
-import { EventTypes } from '@framework/core/constants/event-types';
 import { IAsset } from '@framework/shared/asset';
 import { Application, DisplayObject, Loader } from 'pixi.js';
 
 export class PixiService {
     private readonly pixiApp: Application = new Application();
+    private tickCallback: (deltaTime: number) => void;
+    private static _instance: PixiService;
 
-    constructor(private tickCallback: (deltaTime: number) => void) {}
+    public get instance(): PixiService {
+        return PixiService._instance;
+    }
+
+    private constructor() {}
+
+    public static create(tickCallback: (deltaTime: number) => void): void {
+        if (!PixiService._instance) {
+            PixiService._instance = new PixiService();
+        }
+
+        PixiService._instance.tickCallback = tickCallback;
+    }
 
     public addToLoader(asset: IAsset): void {
         this.pixiApp.loader.add(asset.name, asset.path);
