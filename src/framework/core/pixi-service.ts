@@ -1,12 +1,12 @@
 import { IAsset } from '@framework/shared/asset';
-import { Application, DisplayObject, Loader } from 'pixi.js';
+import { Application, DisplayObject, Loader } from '@framework/core/pixi-types';
 
 export class PixiService {
     private readonly pixiApp: Application = new Application();
     private tickCallback: (deltaTime: number) => void;
     private static _instance: PixiService;
 
-    public get instance(): PixiService {
+    public static get instance(): PixiService {
         return PixiService._instance;
     }
 
@@ -30,6 +30,10 @@ export class PixiService {
 
     public addToStage(displayObject: DisplayObject): void {
         this.pixiApp.stage.addChild(displayObject);
+    }
+
+    public removeFromStage(displayObject: DisplayObject): void {
+        this.pixiApp.stage.removeChild(displayObject);
     }
 
     private onAssetsLoaded(loader: Loader, resources: unknown) {

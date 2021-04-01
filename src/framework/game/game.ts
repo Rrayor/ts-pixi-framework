@@ -11,6 +11,7 @@ export class Game implements IPreInit, IInit, ITicking, IPreDestroy, IDestroy {
         this.hierarchy.preInit();
     }
     init(): void {
+        PixiService.instance.load();
         this.hierarchy.init();
     }
     postInit(): void {

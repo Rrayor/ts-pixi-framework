@@ -1,1 +1,1 @@
-export { Sprite, Texture, TilingSprite } from 'pixi.js';
+export { Sprite, Texture, TilingSprite, Application, DisplayObject, Loader } from 'pixi.js';
