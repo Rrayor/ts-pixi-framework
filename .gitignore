@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+#copyright files - Everything I am not the author of, I prefix with 'copyright_' even is redistribution is allowed by its license.
+# I will provide a link for these assets in their respective folder at least, but probably in the readme as well if I am able
+copyright_*
