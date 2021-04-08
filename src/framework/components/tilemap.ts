@@ -1,8 +1,9 @@
+import { AssetLoader } from '@framework/components/asset-loader';
+import { Rectangle, Resource, Texture } from '@framework/core/pixi-types';
 import { Entity } from '@framework/ecs';
 import { IComponent } from '@framework/ecs/core/component';
-import { AssetLoader } from '@framework/components/asset-loader';
 import { IAsset } from '@framework/shared/asset';
-import { Texture, Resource, Rectangle } from '@framework/core/pixi-types';
+
 import { TileConfig } from '../ecs/shared/tile-config';
 
 interface TilePos {
@@ -32,7 +33,11 @@ export class TileMapComponent implements IComponent {
     postInit(): void {}
     tick(deltaTime: number): void {}
     preDestroy(): void {}
-    destroy(): void {}
+    destroy(): void { }
+    
+    getTile(x: number, y: number): Texture {
+        return this._tiles[x][y];
+    }
 
     private loadTiles(): void {
         const sprite = this.assetLoader.getSprite();
