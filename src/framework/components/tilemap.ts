@@ -34,6 +34,10 @@ export class TileMapComponent implements IComponent {
     preDestroy(): void {}
     destroy(): void {}
 
+    public getTile(x: number, y: number): Texture {
+        return this._tiles[x][y];
+    }
+
     private loadTiles(): void {
         const sprite = this.assetLoader.getSprite();
 

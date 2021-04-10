@@ -1,9 +1,10 @@
 import { IAsset } from '@framework/shared/asset';
 import { Application, DisplayObject, Loader } from '@framework/core/pixi-types';
+import { Game } from '@framework/game/game';
 
 export class PixiService {
-    private readonly pixiApp: Application = new Application();
-    private tickCallback: (deltaTime: number) => void;
+    private readonly pixiApp = new Application();
+    private game: Game;
     private static _instance: PixiService;
 
     public static get instance(): PixiService {
@@ -12,42 +13,46 @@ export class PixiService {
 
     private constructor() {}
 
-    public static create(tickCallback: (deltaTime: number) => void): void {
-        if (!PixiService._instance) {
+    public static create(game: Game): void {
+        if (!PixiService.instance) {
             PixiService._instance = new PixiService();
         }
 
-        PixiService._instance.tickCallback = tickCallback;
+        PixiService.instance.game = game;
+    }
+
+    public appendView(element: HTMLElement) {
+        element.appendChild(PixiService.instance.pixiApp.view);
     }
 
     public addToLoader(asset: IAsset): void {
-        this.pixiApp.loader.add(asset.name, asset.path);
+        PixiService.instance.pixiApp.loader.add(asset.name, asset.path);
     }
 
     public load(): void {
-        this.pixiApp.loader.load(this.onAssetsLoaded);
+        PixiService.instance.pixiApp.loader.load(PixiService.instance.onAssetsLoaded);
     }
 
     public addToStage(displayObject: DisplayObject): void {
-        this.pixiApp.stage.addChild(displayObject);
+        PixiService.instance.pixiApp.stage.addChild(displayObject);
     }
 
     public removeFromStage(displayObject: DisplayObject): void {
-        this.pixiApp.stage.removeChild(displayObject);
+        PixiService.instance.pixiApp.stage.removeChild(displayObject);
     }
 
     private onAssetsLoaded(loader: Loader, resources: unknown) {
-        this.pixiApp.ticker.add(this.tick);
+        PixiService.instance.pixiApp.ticker.add(PixiService.instance.tick);
 
-        loader.onError((error: any) => this.onPixiError(error));
+        loader.onError = (error: any) => PixiService.instance.onPixiError(error);
     }
 
     private tick(deltaTime: number) {
-        if (!this.tickCallback) {
-            throw new Error('No callback function defined for Pixi tick');
+        if (!PixiService.instance.game) {
+            throw new Error('No game defined for Pixi tick');
         }
 
-        this.tickCallback(deltaTime);
+        PixiService.instance.game.tick(deltaTime);
     }
 
     private onPixiError(error: any) {
