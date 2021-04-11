@@ -41,6 +41,10 @@ export class PixiService {
         PixiService.instance.pixiApp.stage.removeChild(displayObject);
     }
 
+    public run(): void {
+        PixiService.instance.pixiApp.renderer.render(PixiService.instance.pixiApp.stage);
+    }
+
     private onAssetsLoaded(loader: Loader, resources: unknown) {
         PixiService.instance.pixiApp.ticker.add(PixiService.instance.tick);
 
