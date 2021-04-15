@@ -1,9 +1,10 @@
 import { IAsset } from '@framework/shared/asset';
 import { Application, DisplayObject, Loader } from '@framework/core/pixi-types';
 import { Game } from '@framework/game/game';
+import { AppSettings } from '@framework/core/constants/app-settings';
 
 export class PixiService {
-    private readonly pixiApp = new Application();
+    private readonly pixiApp = new Application(AppSettings.PIXI_OPTIONS);
     private game: Game;
     private static _instance: PixiService;
 

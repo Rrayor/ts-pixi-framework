@@ -25,10 +25,9 @@ export class TileMapComponent implements IComponent {
 
     preInit(): void {
         this.assetLoader.preInit();
-    }
-    init(): void {
         this.loadTiles();
     }
+    init(): void {}
     postInit(): void {}
     tick(deltaTime: number): void {}
     preDestroy(): void {}
