@@ -1,10 +1,11 @@
-import { IAsset } from '@framework/shared/asset';
 import { Application, DisplayObject, Loader } from '@framework/core/pixi-types';
 import { Game } from '@framework/game/game';
-import { AppSettings } from '@framework/core/constants/app-settings';
+import { IAsset } from '@framework/shared/asset';
+
+import { PixiSettings } from './settings/pixi-settings';
 
 export class PixiService {
-    private readonly pixiApp = new Application(AppSettings.PIXI_OPTIONS);
+    private pixiApp: Application;
     private game: Game;
     private static _instance: PixiService;
 
@@ -14,11 +15,12 @@ export class PixiService {
 
     private constructor() {}
 
-    public static create(game: Game): void {
+    public static create(game: Game, pixiSettings: PixiSettings): void {
         if (!PixiService.instance) {
             PixiService._instance = new PixiService();
         }
 
+        PixiService.instance.pixiApp = new Application(pixiSettings);
         PixiService.instance.game = game;
     }
 

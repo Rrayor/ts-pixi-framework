@@ -1,17 +1,19 @@
+import { PixiService } from '@framework/core/pixi-service';
 import { Entity } from '@framework/ecs';
 import { EntityHierarchy } from '@framework/ecs/entity-hierarchy';
-import { PixiService } from '@framework/core/pixi-service';
-import { IPreDestroy, IDestroy, IInit, IPreInit, ITicking } from '@framework/ecs/shared/lifecycle';
+import { IDestroy, IInit, IPreDestroy, IPreInit, ITicking } from '@framework/ecs/shared/lifecycle';
+
+import { AppSettings } from '../core/settings/app-settings';
 
 export class Game implements IPreInit, IInit, ITicking, IPreDestroy, IDestroy {
     private readonly hierarchy: EntityHierarchy;
 
-    constructor(private readonly rootElement: HTMLElement) {
+    constructor(private readonly rootElement: HTMLElement, private appSettings: AppSettings | undefined = new AppSettings()) {
         this.hierarchy = new EntityHierarchy();
     }
 
     preInit(): void {
-        PixiService.create(this);
+        PixiService.create(this,this.appSettings.pixiSettings);
         PixiService.instance.appendView(this.rootElement);
         this.hierarchy.preInit();
     }
