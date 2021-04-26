@@ -1,10 +1,20 @@
-import { IPreInit, IInit, IPostInit, ITicking, IPreDestroy, IDestroy } from '@framework/ecs/shared';
 import { IComponent } from '@framework/ecs/core/component';
+import { IDestroy, IInit, IPostInit, IPreDestroy, IPreInit, ITicking } from '@framework/ecs/shared';
+import { Game } from '@framework/game/game';
 
 type constr<T> = { new (...args: any[]): T };
 
 export abstract class Entity implements IPreInit, IInit, IPostInit, ITicking, IPreDestroy, IDestroy {
     private _components: IComponent[] = [];
+    private _game: Game;
+
+    public get game(): Game {
+        return this._game;
+    }
+
+    public set game(game: Game) {
+        this._game = game;
+    }
 
     constructor(public readonly id: string) {}
 

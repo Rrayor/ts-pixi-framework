@@ -8,12 +8,16 @@ import { AppSettings } from '../core/settings/app-settings';
 export class Game implements IPreInit, IInit, ITicking, IPreDestroy, IDestroy {
     private readonly hierarchy: EntityHierarchy;
 
-    constructor(private readonly rootElement: HTMLElement, private appSettings: AppSettings | undefined = new AppSettings()) {
+    public get appSettings() {
+        return this._appSettings;
+    }
+
+    constructor(private readonly rootElement: HTMLElement, private _appSettings: AppSettings | undefined = new AppSettings()) {
         this.hierarchy = new EntityHierarchy();
     }
 
     preInit(): void {
-        PixiService.create(this,this.appSettings.pixiSettings);
+        PixiService.create(this,this._appSettings.pixiSettings);
         PixiService.instance.appendView(this.rootElement);
         this.hierarchy.preInit();
     }
@@ -35,6 +39,7 @@ export class Game implements IPreInit, IInit, ITicking, IPreDestroy, IDestroy {
     }
 
     public addToHierarchy(entity: Entity) {
+        entity.game = this;
         this.hierarchy.addEntity(entity);
     }
 
