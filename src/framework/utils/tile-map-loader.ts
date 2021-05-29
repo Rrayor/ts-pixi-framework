@@ -1,29 +1,23 @@
 import { AssetLoader } from '@framework/components/asset-loader';
-import { Entity } from '@framework/ecs';
+import { TileMap } from './tilemap';
 
-import { IComponent } from '../ecs/core/component';
+export class TileMapLoader {
+    private _map: TileMap;
+    private readonly assetLoader: AssetLoader;
 
-export class TileMapLoader implements IComponent {
-  entity: Entity;
+    public get map(): TileMap {
+        if (!this._map) {
+            throw new Error('map is not loaded yet');
+        }
 
-  // TODO: Level type
-  private data: unknown;
-  private readonly assetLoader: AssetLoader;
+        return this._map;
+    }
 
-  constructor(assetLoader: AssetLoader) {
-    this.assetLoader = assetLoader;
-  }
+    constructor(assetLoader: AssetLoader) {
+        this.assetLoader = assetLoader;
+    }
 
-  preInit(): void { }
-
-  init(): void {
-    this.data = this.assetLoader.parseJSON();
-  }
-
-  postInit(): void {}
-  tick(deltaTime: number): void {}
-  preDestroy(): void {}
-  destroy(): void {}
-
-
+    loadMap(): void {
+        this._map = this.assetLoader.parseJSON<TileMap>();
+    }
 }

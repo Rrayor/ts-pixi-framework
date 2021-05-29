@@ -27,7 +27,7 @@ export class AssetLoader implements IComponent, SpriteLoader {
         return Sprite.from(this._asset.path);
     }
 
-    public parseJSON(): unknown {
+    public parseJSON<T>(): T {
         const json = PixiService.instance.getResource(this._asset.name).data;
         return JSON.parse(json);
     }

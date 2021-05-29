@@ -4,7 +4,6 @@ import { Entity } from '@framework/ecs';
 import { IComponent } from '@framework/ecs/core/component';
 import { TileConfig } from '@framework/ecs/shared/tile-config';
 import { IAsset } from '@framework/shared/asset';
-import { TileMapLoader } from '../utils/tile-map-loader';
 
 interface TilePos {
     x: number;
@@ -15,20 +14,17 @@ interface TilePos {
 
 export class TileMapDeprecatedComponent implements IComponent {
     entity: Entity;
-    private atlasAssetLoader: AssetLoader;
-    private tileMapLoader: TileMapLoader;
+    private assetLoader: AssetLoader;
     private readonly tileConfig: TileConfig;
     private _tiles: Texture<Resource>[][] = [[]];
 
-    constructor(atlas: IAsset, tileMap: IAsset, tileConfig: TileConfig) {
-        this.atlasAssetLoader = new AssetLoader(atlas);
-        this.tileMapLoader = new TileMapLoader(new AssetLoader(tileMap));
+    constructor(asset: IAsset, tileConfig: TileConfig) {
+        this.assetLoader = new AssetLoader(asset);
         this.tileConfig = tileConfig;
     }
 
     preInit(): void {
-        this.atlasAssetLoader.preInit();
-        this.tileMapLoader.loadMap();
+        this.assetLoader.preInit();
         this.loadTiles();
     }
     init(): void {}
@@ -42,7 +38,7 @@ export class TileMapDeprecatedComponent implements IComponent {
     }
 
     private loadTiles(): void {
-        const sprite = this.atlasAssetLoader.getSprite();
+        const sprite = this.assetLoader.getSprite();
 
         for (let i = 0; i < this.tileConfig.tileCountX * this.tileConfig.tileCountY; i++) {
             const { x, y, tilePosX, tilePosY } = this.calculateTilePosition(i);
