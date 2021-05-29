@@ -1,9 +1,9 @@
 import { PixiService } from '@framework/core/pixi-service';
+import { Sprite } from '@framework/core/pixi-types';
 import { Entity } from '@framework/ecs';
 import { IComponent } from '@framework/ecs/core/component';
-import { IAsset } from '@framework/shared/asset';
-import { Sprite } from '@framework/core/pixi-types';
 import { SpriteLoader } from '@framework/ecs/shared/sprite-loader';
+import { IAsset } from '@framework/shared/asset';
 
 export class AssetLoader implements IComponent, SpriteLoader {
     entity: Entity;
@@ -16,6 +16,7 @@ export class AssetLoader implements IComponent, SpriteLoader {
     preInit(): void {
         PixiService.instance.addToLoader(this._asset);
     }
+
     init(): void {}
     postInit(): void {}
     tick(deltaTime: number): void {}
@@ -24,5 +25,10 @@ export class AssetLoader implements IComponent, SpriteLoader {
 
     public getSprite(): Sprite {
         return Sprite.from(this._asset.path);
+    }
+
+    public parseJSON(): unknown {
+        const json = PixiService.instance.getResource(this._asset.name).data;
+        return JSON.parse(json);
     }
 }

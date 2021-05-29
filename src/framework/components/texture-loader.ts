@@ -1,5 +1,5 @@
-import { Entity } from '@framework/ecs';
 import { Sprite, Texture } from '@framework/core/pixi-types';
+import { Entity } from '@framework/ecs';
 import { IComponent } from '@framework/ecs/core/component';
 import { SpriteLoader } from '@framework/ecs/shared/sprite-loader';
 

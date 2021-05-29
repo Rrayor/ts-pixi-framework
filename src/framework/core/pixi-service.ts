@@ -1,6 +1,7 @@
 import { Application, DisplayObject, Loader } from '@framework/core/pixi-types';
 import { Game } from '@framework/game/game';
 import { IAsset } from '@framework/shared/asset';
+import { ILoaderResource } from '@pixi/loaders';
 
 import { PixiSettings } from './settings/pixi-settings';
 
@@ -34,6 +35,10 @@ export class PixiService {
 
     public load(): void {
         PixiService.instance.pixiApp.loader.load(PixiService.instance.onAssetsLoaded);
+    }
+
+    public getResource(name: string): ILoaderResource {
+        return PixiService.instance.pixiApp.loader.resources[name];
     }
 
     public addToStage(displayObject: DisplayObject): void {

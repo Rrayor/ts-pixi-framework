@@ -1,10 +1,10 @@
+import { TransformComponent } from '@framework/components/transform';
+import { PixiService } from '@framework/core/pixi-service';
+import { Sprite } from '@framework/core/pixi-types';
 import { Entity } from '@framework/ecs';
 import { IComponent } from '@framework/ecs/core/component';
-import { Sprite } from '@framework/core/pixi-types';
-import { PixiService } from '@framework/core/pixi-service';
-import { TransformComponent } from '@framework/components/transform';
-import { Logger, LogLevel, LogTarget } from '@framework/logger';
 import { SpriteLoader } from '@framework/ecs/shared';
+import { Logger, LogLevel, LogTarget } from '@framework/logger';
 
 export class SpriteRenderer implements IComponent {
     entity: Entity;

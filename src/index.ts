@@ -1,12 +1,13 @@
-import { ExampleGame } from 'example/entities/example-game';
-import { Tile } from 'example/entities/tile';
-import { TileMapComponent } from '@framework/components/tilemap';
-import { TransformComponent } from '@framework/components/transform';
 import { SpriteRenderer } from '@framework/components/sprite-renderer';
 import { TextureLoader } from '@framework/components/texture-loader';
+import { TileMapComponent } from '@framework/components/tilemap';
+import { TransformComponent } from '@framework/components/transform';
 import { PixiService } from '@framework/core/pixi-service';
-import tileset from './example/assets/copyright_tileset.png';
 import { CenterScript } from 'example/components/center-script';
+import { ExampleGame } from 'example/entities/example-game';
+import { Tile } from 'example/entities/tile';
+
+import tileset from './example/assets/copyright_tileset.png';
 import { RotateScript } from './example/components/rotate-script';
 
 const game = new ExampleGame(document.body);

@@ -1,4 +1,5 @@
 import { Entity } from '@framework/ecs';
+
 import { IComponent } from '../ecs/core/component';
 
 export class ScriptComponent implements IComponent {

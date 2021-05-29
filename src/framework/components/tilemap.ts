@@ -1,9 +1,9 @@
+import { AssetLoader } from '@framework/components/asset-loader';
+import { Rectangle, Resource, Texture } from '@framework/core/pixi-types';
 import { Entity } from '@framework/ecs';
 import { IComponent } from '@framework/ecs/core/component';
-import { AssetLoader } from '@framework/components/asset-loader';
+import { TileConfig } from '@framework/ecs/shared/tile-config';
 import { IAsset } from '@framework/shared/asset';
-import { Texture, Resource, Rectangle } from '@framework/core/pixi-types';
-import { TileConfig } from '../ecs/shared/tile-config';
 
 interface TilePos {
     x: number;

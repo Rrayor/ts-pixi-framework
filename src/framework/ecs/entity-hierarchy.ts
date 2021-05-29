@@ -1,5 +1,6 @@
 import { Entity } from '@framework/ecs/core';
-import { IPreInit, IInit, ITicking, IPreDestroy, IDestroy } from '@framework/ecs/shared';
+import { IDestroy, IInit, IPreDestroy, IPreInit, ITicking } from '@framework/ecs/shared';
+
 import { IPostInit } from './shared/lifecycle';
 
 export class EntityHierarchy implements IPreInit, IInit, IPostInit, ITicking, IPreDestroy, IDestroy {
