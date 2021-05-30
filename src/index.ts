@@ -13,17 +13,12 @@ import { RotateScript } from './example/components/rotate-script';
 const game = new ExampleGame(document.body);
 
 const tile = new Tile('tile');
-const tileMap = new TileMapComponent({ name: 'tilemap', path: tileset }, { tileCountX: 12, tileCountY: 6, tileHeight: 16, tileWidth: 16 });
+const tileMap = new TileMapComponent({ name: 'tileset', path: tileset }, { name: 'level', path: '/example/assets/level.json' });
 
-tile.addComponent(TransformComponent, new TransformComponent());
 tile.addComponent(TileMapComponent, tileMap);
 game.addToHierarchy(tile);
 game.preInit();
 
-const spriteRenderer = new SpriteRenderer(new TextureLoader(tileMap.getTile(0, 1)));
-tile.addComponent(SpriteRenderer, spriteRenderer);
-tile.addComponent(CenterScript, new CenterScript());
-tile.addComponent(RotateScript, new RotateScript());
 game.init();
 game.postInit();
 PixiService.instance.run();

@@ -17,6 +17,10 @@ export class TileMapLoader {
         this.assetLoader = assetLoader;
     }
 
+    preInit(): void {
+        this.assetLoader.preInit();
+    }
+
     loadMap(): void {
         this._map = this.assetLoader.parseJSON<TileMap>();
     }
