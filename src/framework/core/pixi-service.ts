@@ -38,6 +38,7 @@ export class PixiService {
     }
 
     public getResource(name: string): ILoaderResource {
+        console.log(PixiService.instance.pixiApp.loader.resources);
         return PixiService.instance.pixiApp.loader.resources[name];
     }
 

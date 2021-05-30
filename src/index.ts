@@ -13,7 +13,7 @@ import { RotateScript } from './example/components/rotate-script';
 const game = new ExampleGame(document.body);
 
 const tile = new Tile('tile');
-const tileMap = new TileMapComponent({ name: 'tileset', path: tileset }, { name: 'level', path: '/example/assets/level.json' });
+const tileMap = new TileMapComponent({ name: 'tileset', path: tileset }, { name: 'level', path: './src/example/assets/level.json' });
 
 tile.addComponent(TileMapComponent, tileMap);
 game.addToHierarchy(tile);

@@ -28,7 +28,8 @@ export class TileMapComponent implements IComponent {
         this.atlasAssetLoader.preInit();
         this.tileMapLoader.preInit();
     }
-    init(): void {
+    init(): void {}
+    postInit(): void {
         this.tileMapLoader.loadMap();
         this.tileConfig = this.tileMapLoader.map.tileConfig;
         this.loadTileTextures();
@@ -44,7 +45,6 @@ export class TileMapComponent implements IComponent {
             }
         }
     }
-    postInit(): void {}
     tick(deltaTime: number): void {}
     preDestroy(): void {}
     destroy(): void {}
