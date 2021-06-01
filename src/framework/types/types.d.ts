@@ -3,7 +3,7 @@ declare module '*.png' {
     export default image;
 }
 
-declare module '*.json' {
+declare module '*.level' {
     const content: any;
     export default content;
 }

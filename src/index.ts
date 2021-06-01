@@ -1,15 +1,10 @@
-import { SpriteRenderer } from '@framework/components/sprite-renderer';
-import { TextureLoader } from '@framework/components/texture-loader';
 import { TileMapComponent } from '@framework/components/tilemap';
-import { TransformComponent } from '@framework/components/transform';
 import { PixiService } from '@framework/core/pixi-service';
-import { CenterScript } from 'example/components/center-script';
 import { ExampleGame } from 'example/entities/example-game';
 import { Tile } from 'example/entities/tile';
 
 import tileset from './example/assets/copyright_tileset.png';
-import level from './example/assets/level.json';
-import { RotateScript } from './example/components/rotate-script';
+import level from './example/assets/level.level';
 
 const game = new ExampleGame(document.body);
 

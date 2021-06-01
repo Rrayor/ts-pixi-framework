@@ -3,6 +3,7 @@ import { Game } from '@framework/game/game';
 import { IAsset } from '@framework/shared/asset';
 import { ILoaderResource } from '@pixi/loaders';
 
+import { LevelLoaderPlugin } from './level-loader';
 import { PixiSettings } from './settings/pixi-settings';
 
 export class PixiService {
@@ -21,6 +22,7 @@ export class PixiService {
             PixiService._instance = new PixiService();
         }
 
+        Loader.registerPlugin(LevelLoaderPlugin);
         PixiService.instance.pixiApp = new Application(pixiSettings);
         PixiService.instance.game = game;
     }
