@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "test",
-    "dev": "webpack serve --open",
+    "dev": "webpack serve --open --hot",
     "lint": "eslint */**/*.{js,ts,tsx} --quiet --fix",
     "prepare": "husky install"
   },
