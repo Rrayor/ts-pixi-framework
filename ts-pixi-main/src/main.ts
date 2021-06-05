@@ -7,15 +7,19 @@ let win: BrowserWindow | null;
 function createWindow(): void {
     win = new BrowserWindow({ width: 800, height: 600 });
     // load the dist folder from Angular
+
+    const pathname = path.join(__dirname, '../../ts-pixi-ui/dist/ts-pixi-ui/index.html');
+    console.log(pathname);
+
     win.loadURL(
         url.format({
-            pathname: path.join(__dirname, '../dist/index.html'),
+            pathname,
             protocol: 'file:',
             slashes: true,
         })
     );
     // The following is optional and will open the DevTools:
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools();
     win.on('closed', () => {
         win = null;
     });

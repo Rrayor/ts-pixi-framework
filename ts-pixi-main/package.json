@@ -5,9 +5,11 @@
   "private": true,
   "scripts": {
     "test": "test",
-    "dev": "webpack serve --open --hot",
+    "build": "webpack",
     "lint": "eslint */**/*.{js,ts,tsx} --quiet --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "electron": "electron ./dist/main.js",
+    "start": "npm run build && npm run electron"
   },
   "husky": {
     "hooks": {

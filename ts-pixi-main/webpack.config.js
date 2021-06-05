@@ -2,7 +2,6 @@ const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     target: 'electron-main',
@@ -15,15 +14,9 @@ module.exports = {
         historyApiFallback: true,
         stats: 'errors-only',
     },
-    plugins: [
-        new ForkTsCheckerWebpackPlugin({}),
-        new ForkTsCheckerNotifierWebpackPlugin({ title: 'TypeScript', excludeWarnings: false }),
-        new HtmlWebpackPlugin({
-            title: 'Development',
-        }),
-    ],
+    plugins: [new ForkTsCheckerWebpackPlugin({}), new ForkTsCheckerNotifierWebpackPlugin({ title: 'TypeScript', excludeWarnings: false })],
     output: {
-        filename: '[name].[contenthash].js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
