@@ -58,7 +58,7 @@ export class PixiService {
     private onAssetsLoaded(loader: Loader, resources: unknown) {
         PixiService.instance.pixiApp.ticker.add(PixiService.instance.tick);
 
-        loader.onError = (error: any) => PixiService.instance.onPixiError(error);
+        loader.onError.add((error: any) => PixiService.instance.onPixiError(error));
     }
 
     private tick(deltaTime: number) {

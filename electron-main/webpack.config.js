@@ -5,9 +5,9 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    target: 'web',
+    target: 'electron-main',
     mode: 'development',
-    entry: './src/index.ts',
+    entry: './src/main.ts',
     devServer: {
         contentBase: './dist',
         clientLogLevel: 'warning',
@@ -58,17 +58,17 @@ module.exports = {
         plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
     },
     devtool: 'inline-source-map',
-    optimization: {
-        moduleIds: 'deterministic',
-        runtimeChunk: 'single',
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all',
-                },
-            },
-        },
-    },
+    // optimization: {
+    //     moduleIds: 'deterministic',
+    //     runtimeChunk: 'single',
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendor: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 name: 'vendors',
+    //                 chunks: 'all',
+    //             },
+    //         },
+    //     },
+    // },
 };
