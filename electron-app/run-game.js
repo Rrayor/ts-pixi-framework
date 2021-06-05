@@ -1,0 +1,21 @@
+"use strict";
+exports.__esModule = true;
+exports.runGame = void 0;
+var tilemap_1 = require("@framework/components/tilemap");
+var pixi_service_1 = require("@framework/core/pixi-service");
+var example_game_1 = require("@example/entities/example-game");
+var tile_1 = require("@example/entities/tile");
+var path = require('path');
+exports.runGame = function () {
+    var game = new example_game_1.ExampleGame(document.body);
+    var tilesetPath = 'src/electron-app/example/assets/copyright_tileset.png';
+    var levelPath = 'src/electron-app/example/assets/level.level';
+    var tile = new tile_1.Tile('tile');
+    var tileMap = new tilemap_1.TileMapComponent({ name: 'tileset', path: path.join(__dirname, tilesetPath) }, { name: 'level', path: path.join(__dirname, levelPath) });
+    tile.addComponent(tilemap_1.TileMapComponent, tileMap);
+    game.addToHierarchy(tile);
+    game.preInit();
+    game.init();
+    game.postInit();
+    pixi_service_1.PixiService.instance.run();
+};

@@ -1,6 +1,6 @@
 {
   "name": "ts-pixi-framework",
-  "main": "main.ts",
+  "main": "electron-app/main.js",
   "description": "A personal project. An entity component system and some other utilities built around Pixi JS.  Hoping to use it in future projects of mine.",
   "version": "0.0.1",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron-tsc": "tsc main.ts && ng build --base-href ./ && electron .",
+    "electron-tsc": "tsc electron-app/main.ts && ng build --base-href ./ && electron .",
     "postinstall": "patch-package"
   },
   "private": true,

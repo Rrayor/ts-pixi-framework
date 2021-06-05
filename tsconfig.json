@@ -22,7 +22,7 @@
       "dom"
     ],
     "paths": {
-      "@electron-app/*": ["src/electron-app/*"]
+      "@electron-app/*": ["electron-app/*"]
     },
   },
   "angularCompilerOptions": {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { runGame } from '@electron-app/index';
+// import { runGame } from '@electron-app/index';
+import { GameService } from './game.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,11 @@ import { runGame } from '@electron-app/index';
 export class AppComponent implements OnInit {
   title = 'ts-pixi-framework';
 
-  ngOnInit(): void {
+  constructor(private gameService: GameService) {}
+
+  async ngOnInit(): Promise<void> {
+    const runGame = await this.gameService.getGame();
+
     runGame();
   }
 }
