@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --watch && patch-package",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -51,6 +51,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "ngx-tailwind": "^2.2.1",
+    "patch-package": "^6.4.7",
     "postcss": "^8.2.15",
     "protractor": "~7.0.0",
     "tailwindcss": "^2.1.2",

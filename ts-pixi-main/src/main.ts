@@ -4,7 +4,7 @@ import url from 'url';
 
 let win: BrowserWindow | null;
 function createWindow(): void {
-    win = new BrowserWindow({ width: 1366, height: 768 });
+    win = new BrowserWindow({ width: 1366, height: 768, webPreferences: { contextIsolation: false, nodeIntegration: true } });
     // load the dist folder from Angular
 
     const pathname = path.join(__dirname, '../../ts-pixi-ui/dist/ts-pixi-ui/index.html');
