@@ -67,11 +67,8 @@
           }
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "customWebpackConfig": {
-              "path": "./custom-webpack.config.js"
-            },
             "browserTarget": "ts-pixi-ui:build"
           },
           "configurations": {

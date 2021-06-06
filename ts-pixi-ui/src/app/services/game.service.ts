@@ -18,17 +18,4 @@ export class GameService {
       console.warn('Could not load electron ipc');
     }
   }
-
-  async getGame(): Promise<() => void> {
-    return new Promise<() => void>((resolve, reject) => {
-      if (!this.ipc) {
-        throw new Error('ipc is not defined');
-      }
-
-      this.ipc.once('getGameResponse', (event, arg) => {
-        resolve(arg);
-      });
-      this.ipc.send('getGame');
-    });
-  }
 }

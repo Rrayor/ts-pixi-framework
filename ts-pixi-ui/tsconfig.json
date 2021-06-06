@@ -18,7 +18,11 @@
       "ES5",
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@framework/*": ["src/framework/*"],
+      "@example-game/*": ["src/example-game/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

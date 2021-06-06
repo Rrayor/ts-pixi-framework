@@ -1,10 +1,10 @@
 import { TileMapComponent } from '@framework/components/tilemap';
 import { PixiService } from '@framework/core/pixi-service';
-import { ExampleGame } from 'example/entities/example-game';
-import { Tile } from 'example/entities/tile';
+import { ExampleGame } from '@example-game/entities/example-game';
+import { Tile } from '@example-game/entities/tile';
 
-import tileset from './example/assets/copyright_tileset.png';
-import level from './example/assets/level.level';
+import tileset from '@example-game/assets/copyright_tileset.png';
+import level from '@example-game/assets/level.level';
 
 export function runGame(): void {
     const game = new ExampleGame(document.body);

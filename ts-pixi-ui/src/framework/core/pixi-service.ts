@@ -7,9 +7,9 @@ import { LevelLoaderPlugin } from './level-loader';
 import { PixiSettings } from './settings/pixi-settings';
 
 export class PixiService {
+    private static _instance: PixiService;
     private pixiApp: Application;
     private game: Game;
-    private static _instance: PixiService;
 
     public static get instance(): PixiService {
         return PixiService._instance;

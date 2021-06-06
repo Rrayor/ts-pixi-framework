@@ -1,5 +1,4 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import { runGame } from './run-game';
 import path from 'path';
 import url from 'url';
 
@@ -9,7 +8,6 @@ function createWindow(): void {
     // load the dist folder from Angular
 
     const pathname = path.join(__dirname, '../../ts-pixi-ui/dist/ts-pixi-ui/index.html');
-    console.log(pathname);
 
     win.loadURL(
         url.format({
@@ -30,12 +28,4 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
     }
-});
-
-ipcMain.on('appLoaded', (event, args) => {
-    if (!win) {
-        throw new Error('Window is not defined!');
-    }
-
-    win.webContents.send('appLoadedResponse', runGame);
 });
