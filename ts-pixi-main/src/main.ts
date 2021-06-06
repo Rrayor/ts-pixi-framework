@@ -4,7 +4,7 @@ import url from 'url';
 
 let win: BrowserWindow | null;
 function createWindow(): void {
-    win = new BrowserWindow({ width: 800, height: 600 });
+    win = new BrowserWindow({ width: 1366, height: 768 });
     // load the dist folder from Angular
 
     const pathname = path.join(__dirname, '../../ts-pixi-ui/dist/ts-pixi-ui/index.html');
@@ -16,8 +16,10 @@ function createWindow(): void {
             slashes: true,
         })
     );
+
     // The following is optional and will open the DevTools:
     win.webContents.openDevTools();
+
     win.on('closed', () => {
         win = null;
     });
