@@ -1,3 +1,9 @@
 import { initApp } from '@core/app-handler';
+import { initIpc } from '@core/ipc-handler';
 
-initApp();
+const init = (): void => {
+    initApp();
+    initIpc();
+};
+
+init();
