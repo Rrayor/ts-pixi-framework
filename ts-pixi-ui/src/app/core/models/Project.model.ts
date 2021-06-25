@@ -1,6 +1,5 @@
-export class Project {
-    // TODO: serialize
-    
+import { Serializable } from '@core/interfaces/Serializable.interface';
+export class Project implements Serializable<Project> {
     private readonly _name: string;
     private readonly _path: string;
 
@@ -15,5 +14,13 @@ export class Project {
     constructor(name: string, path: string) {
         this._name = name;
         this._path = path;
+    }
+
+    serialize(): string {
+        return JSON.stringify(this);
+    }
+
+    deserialize(json: string): Project {
+        return JSON.parse(json) as Project;
     }
 }

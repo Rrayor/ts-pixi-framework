@@ -1,32 +1,28 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "allowSyntheticDefaultImports": true,
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "es2020",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "ES5",
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "@framework/*": ["src/framework/*"],
-      "@example-game/*": ["src/example-game/*"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "allowSyntheticDefaultImports": true,
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "module": "es2020",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es5",
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["ES5", "es2018", "dom"],
+        "paths": {
+            "@core/*": ["src/app/core/*"],
+            "@services:/*": ["src/app/services/*"],
+            "@framework/*": ["src/framework/*"],
+            "@example-game/*": ["src/example-game/*"]
+        }
+    },
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true
     }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  }
 }
