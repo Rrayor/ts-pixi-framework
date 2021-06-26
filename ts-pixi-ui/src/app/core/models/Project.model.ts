@@ -19,8 +19,4 @@ export class Project implements Serializable<Project> {
     serialize(): string {
         return JSON.stringify(this);
     }
-
-    deserialize(json: string): Project {
-        return JSON.parse(json) as Project;
-    }
 }

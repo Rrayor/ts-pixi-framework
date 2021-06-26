@@ -13,28 +13,28 @@ export class FilesService {
 
     private constructor() {}
 
-    listDirectory = (directoryPath: string): Array<string> => {
+    listDirectory(directoryPath: string): Array<string> {
         try {
             return readdirSync(directoryPath);
         } catch (error) {
             // TODO: better error handling
             console.error(error);
         }
-    };
+    }
 
-    readFile = (filePath: string): Buffer => {
+    readFile(filePath: string): Buffer {
         try {
             return readFileSync(filePath);
         } catch (error) {
             console.error(error);
         }
-    };
+    }
 
-    writeFile = (filePath: string, content: string): void => {
+    writeFile(filePath: string, content: string): void {
         try {
             writeFileSync(filePath, content);
         } catch (error) {
             console.error(error);
         }
-    };
+    }
 }
