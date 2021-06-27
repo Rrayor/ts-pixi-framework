@@ -17,6 +17,7 @@
         "paths": {
             "@core/*": ["src/app/core/*"],
             "@services:/*": ["src/app/services/*"],
+            "@modules/*": ["src/app/modules/*"],
             "@framework/*": ["src/framework/*"],
             "@example-game/*": ["src/example-game/*"]
         }
