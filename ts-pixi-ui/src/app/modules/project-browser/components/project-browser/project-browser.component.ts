@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from '../../../../services/project.service';
+import { Project } from '../../../../core/models/Project.model';
 
 @Component({
-  selector: 'app-project-browser',
-  templateUrl: './project-browser.component.html',
-  styleUrls: ['./project-browser.component.scss']
+    selector: 'app-project-browser',
+    templateUrl: './project-browser.component.html',
+    styleUrls: ['./project-browser.component.scss']
 })
 export class ProjectBrowserComponent implements OnInit {
+    data: Array<Project>;
 
-  constructor() { }
+    constructor(private projectService: ProjectService) {}
 
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {
+        this.data = this.projectService.getAllProjects();
+    }
 }
